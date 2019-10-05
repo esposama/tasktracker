@@ -25,6 +25,7 @@ export default () => {
   }
 
   if(editTask){
+    console.dir(editTask);
     return <AddPage edit task={editTask} />;
   }
 

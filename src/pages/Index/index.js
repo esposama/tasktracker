@@ -53,9 +53,9 @@ export default () => {
     }
   }, [needsToLogIn, setShouldLogIn, setErrors]);
 
+  //get tasks
   useEffect(() => {
     if (!needsToLogIn && !tasks) {
-      console.log('here')
       client
         .service('tasks')
         .find({
@@ -66,7 +66,9 @@ export default () => {
         .then(tasks => setTasks(tasks.data))
         .catch(err => setErrors(err));
     }
+    console.dir(tasks);
   }, [needsToLogIn, setTasks, tasks, setErrors]);
+
 
 
   const selectRowProp = {
@@ -74,7 +76,7 @@ export default () => {
     onSelect: (row, isSelect, rowIndex, e) => {
       e.preventDefault();
       setSelected(row);
-
+      console.dir(row);
     },
   };
 
@@ -90,7 +92,7 @@ export default () => {
   {
     dataField: 'tags',
     text: 'Tags',
-    formatter: (cell, row, rowIndex, formatExtraData) => row.tags.length > 0 ? row.tags.join(', ') : '-',
+    formatter: (cell, row, rowIndex, formatExtraData) => row.tags.length > 0 ? row.tags.map(tag => tag.text).join(', ') : '-',
   },
   {
     dataField: 'status',
@@ -99,7 +101,7 @@ export default () => {
 
   if (errors) {
     return (
-      <h1>FUCKCHEESE</h1>
+      <h1>Error</h1>
     )
   }
 

@@ -31,7 +31,7 @@ export default () => {
         setError(e);
       });
     }
-  }, [formData])
+  }, [formData, loggedIn])
 
   if (loggedIn) {
     return <Redirect to={{
@@ -40,7 +40,9 @@ export default () => {
   }
 
   if (error) {
-    throw error; //ToDo: Error ; 
+    return (
+      <h1>{error.message}</h1>
+    ); //ToDo: Error ; 
   }
 
   return (

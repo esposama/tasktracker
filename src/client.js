@@ -1,7 +1,6 @@
 import io from 'socket.io-client';
 import feathers from '@feathersjs/client';
 
-
 const socket = io('http://localhost:3030');
 const client = feathers();
 

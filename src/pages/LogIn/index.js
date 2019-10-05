@@ -13,7 +13,7 @@ export default () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const onSubmit = useCallback(evt => {
-    evt.preventDefault();
+    evt.preventDefault(); 
     setFormData({
       email: evt.target.email.value,
       password: evt.target.password.value
@@ -29,7 +29,7 @@ export default () => {
         setError(e);
       });
     }
-  }, [formData])
+  }, [formData, loggedIn])
 
   if (loggedIn) {
     return <Redirect to={{

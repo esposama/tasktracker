@@ -49,6 +49,13 @@ button:checked{
   border-color: $selected-color !important; 
 }
 
+.active{
+  color: #fff;
+  background-color: $selected-color !important;
+  border-color: $selected-color !important;
+  outline: none;
+}
+
 input[type=radio]:checked{
   background: $primary-color !important; 
 }
